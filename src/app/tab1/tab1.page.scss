@@ -5,33 +5,46 @@
   height: 100%;
   padding: 20px;
   text-align: center;
-  background: #f5f7fa;
-}
-
-.header h1 {
-  font-size: 24px;
-  margin-bottom: 5px;
-}
-
-.header p {
-  color: #666;
-  margin-bottom: 30px;
-}
-
-.buttons ion-button {
-  margin-bottom: 15px;
-  height: 55px;
-  font-size: 16px;
-  border-radius: 12px;
-}
-
-.senha {
-  margin-top: 40px;
-}
-
-.numero {
-  font-size: 48px;
-  font-weight: bold;
-  color: #222;
-  margin-top: 10px;
+  --background: #fff;
+  
+  .header {
+  
+    h1 {
+      color: var(--azul-principal);
+      font-size: 2rem;
+      margin-bottom: 5px;
+    }
+  
+    p {
+      font-size: 1.2rem;
+      color: #ccc;
+      margin-bottom: 30px;
+    }
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  
+    ion-button {
+      margin-bottom: 15px;
+      width: 30vw;
+      height: 8vh;
+      font-size: 16px;
+      border-radius: 12px;
+      background: var(--bg-principal);
+    }
+  }
+  
+  .senha {
+    margin-top: 40px;
+  }
+  
+  .numero {
+    font-size: 48px;
+    font-weight: bold;
+    color: #222;
+    margin-top: 10px;
+  }
 }
