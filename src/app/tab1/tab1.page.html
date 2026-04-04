@@ -1,15 +1,28 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="container">
 
-<ion-content>
-  <ion-button expand="full" (click)="gerar('SP')">Senha Prioritária</ion-button>
-  <ion-button expand="full" (click)="gerar('SG')">Senha Geral</ion-button>
-  <ion-button expand="full" (click)="gerar('SE')">Senha Exame</ion-button>
+  <div class="header">
+    <h1>Mobile Tickets</h1>
+    <p>Retire sua senha</p>
+  </div>
 
-  <h2 *ngIf="senhaGerada">Senha: {{ senhaGerada.numero }}</h2>
+  <div class="buttons">
+    <ion-button expand="block" class="btn sp" (click)="gerar('SP')">
+      Senha Prioritária
+    </ion-button>
+
+    <ion-button expand="block" class="btn sg" (click)="gerar('SG')">
+      Senha Geral
+    </ion-button>
+
+    <ion-button expand="block" class="btn se" (click)="gerar('SE')">
+      Retirada de Exames
+    </ion-button>
+  </div>
+
+  <div class="card-senha" *ngIf="senhaGerada">
+    <h2>Sua senha</h2>
+    <h1 class="numero">{{ senhaGerada.numero }}</h1>
+    <p class="tipo">{{ senhaGerada.tipo }}</p>
+  </div>
+
 </ion-content>
