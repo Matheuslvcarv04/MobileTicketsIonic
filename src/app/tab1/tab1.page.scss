@@ -1,0 +1,77 @@
+.container {
+  --background: linear-gradient(135deg, #0f172a, #1e293b);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+  color: #fff;
+}
+
+/* HEADER */
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.header p {
+  color: #94a3b8;
+}
+
+/* BOTÕES */
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.btn {
+  height: 60px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 12px;
+}
+
+/* CORES */
+.sp {
+  --background: #a855f7;
+}
+
+.sg {
+  --background: #3b82f6;
+}
+
+.se {
+  --background: #22c55e;
+}
+
+/* CARD SENHA */
+.card-senha {
+  margin-top: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 25px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.card-senha h2 {
+  font-size: 16px;
+  color: #94a3b8;
+}
+
+.numero {
+  font-size: 48px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.tipo {
+  font-size: 14px;
+  color: #cbd5f5;
+}
