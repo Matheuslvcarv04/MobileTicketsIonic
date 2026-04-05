@@ -1,10 +1,52 @@
-<ion-content class="container">
+﻿<ion-content class="container">
+
   <div class="header">
-    <h1>Relatorio</h1>
+    <h1>Relatórios</h1>
+    <p>Resumo geral do atendimento</p>
+  </div>
+
+  <div class="stats">
+    <div class="stat-card">
+      <span class="label">Emitidas</span>
+      <span class="value">{{ totalEmitidas }}</span>
+    </div>
+
+    <div class="stat-card">
+      <span class="label">Atendidas</span>
+      <span class="value">{{ totalAtendidas }}</span>
+    </div>
   </div>
 
   <div class="card">
-    <h2>Total de Senhas Emitidas</h2>
-    <h1>{{ totalEmitidas }}</h1>
+    <h2>Por Tipo</h2>
+    <div class="tipo-row">
+      <p><strong>SP</strong><span>{{ spTotal }} emitidas | {{ spAtendidas }} atendidas</span></p>
+      <p><strong>SG</strong><span>{{ sgTotal }} emitidas | {{ sgAtendidas }} atendidas</span></p>
+      <p><strong>SE</strong><span>{{ seTotal }} emitidas | {{ seAtendidas }} atendidas</span></p>
+    </div>
   </div>
+
+  <div class="card tempo-card">
+    <h2>Tempo Médio</h2>
+    <h1>{{ tempoMedio }} min</h1>
+  </div>
+
+  <div class="card details-card">
+    <h2>Detalhado</h2>
+
+    <ion-list>
+      <ion-item *ngFor="let ticket of lista">
+        <ion-label>
+          <h2>{{ ticket.numero }}</h2>
+          <p>Tipo: {{ ticket.tipo }}</p>
+          <p>Emissão: {{ ticket.dataEmissao | date:'short' }}</p>
+          <p *ngIf="ticket.dataAtendimento">
+            Atendimento: {{ ticket.dataAtendimento | date:'short' }}
+          </p>
+          <p *ngIf="ticket.guiche">Guichê: {{ ticket.guiche }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+
 </ion-content>
