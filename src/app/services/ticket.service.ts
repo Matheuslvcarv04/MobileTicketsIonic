@@ -23,7 +23,7 @@ export class TicketService {
     SE: 0
   };
 
-  // 🎟️ Gerar senha
+  // Gerar senha
   gerarSenha(tipo: 'SP' | 'SG' | 'SE'): Ticket {
 
     this.contador[tipo]++;
@@ -45,7 +45,7 @@ export class TicketService {
     return ticket;
   }
 
-  // ⏱️ Calcular tempo médio (TM)
+  // Calcular tempo médio
   calcularTempo(tipo: 'SP' | 'SG' | 'SE'): number {
 
     if (tipo === 'SP') {
@@ -66,7 +66,7 @@ export class TicketService {
     return 0;
   }
 
-  // 📣 Chamar próximo (com prioridade)
+  // Chamar próximo (com prioridade)
   chamarProximo(): Ticket | null {
 
     let ticket =
@@ -83,16 +83,16 @@ export class TicketService {
     return ticket || null;
   }
 
-  // ✅ Finalizar atendimento
+  // Finalizar atendimento
   finalizar(ticket: Ticket) {
     ticket.status = 'finalizado';
   }
-// 📊 Relatório detalhado
+// Relatório detalhado
 relatorioDetalhado(): Ticket[] {
   return this.tickets;
 }
 
-// ⏱️ Tempo médio geral
+// Tempo médio geral
 tempoMedioGeral(): number {
   const atendidos = this.tickets.filter(t => t.status === 'finalizado' && t.dataAtendimento);
 
@@ -106,7 +106,7 @@ tempoMedioGeral(): number {
   return Math.round((total / atendidos.length) / 60000); // em minutos
 }
 
-  // 📊 Relatórios
+  // Relatórios
 
   // total geral
   totalEmitidas() {
@@ -126,7 +126,7 @@ tempoMedioGeral(): number {
     return this.tickets.filter(t => t.tipo === tipo && t.status === 'finalizado').length;
   }
 
-  // 📋 Obter fila
+  // Obter fila
   obterFila(): Ticket[] {
     return this.tickets.sort((a, b) => {
       // Prioridade: esperando > atendendo > finalizado
