@@ -15,6 +15,7 @@ export interface Ticket {
 })
 export class TicketService {
   tickets: Ticket[] = [];
+  ultimasChamadas: Ticket[] = [];
 
   private sequenciaDiaria: { [key: string]: number } = {};
 
@@ -79,26 +80,32 @@ export class TicketService {
 
   // Chamar próximo (com prioridade)
   chamarProximo(): Ticket | null {
+    let ticket =
+      this.tickets.find((t) => t.tipo === 'SP' && t.status === 'esperando') ||
+      this.tickets.find((t) => t.tipo === 'SE' && t.status === 'esperando') ||
+      this.tickets.find((t) => t.tipo === 'SG' && t.status === 'esperando');
 
-  let ticket =
-    this.tickets.find(t => t.tipo === 'SP' && t.status === 'esperando') ||
-    this.tickets.find(t => t.tipo === 'SE' && t.status === 'esperando') ||
-    this.tickets.find(t => t.tipo === 'SG' && t.status === 'esperando');
+    if (!ticket) return null;
 
-  if (!ticket) return null;
+    // REGRA DOS 5% (abandonos)
+    if (ticket.tipo === 'SE' && Math.random() < 0.05) {
+      ticket.status = 'abandonado'; // abandonou
+      return this.chamarProximo(); // chama o próximo automaticamente
+    }
 
-  // REGRA DOS 5% (abandonos)
-  if (ticket.tipo === 'SE' && Math.random() < 0.05) {
-    ticket.status = 'abandonado'; // abandonou
-    return this.chamarProximo(); // chama o próximo automaticamente
+    ticket.status = 'atendendo';
+    ticket.dataAtendimento = new Date();
+    ticket.guiche = Math.floor(Math.random() * 3) + 1;
+
+    this.ultimasChamadas.unshift(ticket);
+
+    // mantém só as 5 últimas
+    if (this.ultimasChamadas.length > 5) {
+      this.ultimasChamadas.pop();
+    }
+
+    return ticket;
   }
-
-  ticket.status = 'atendendo';
-  ticket.dataAtendimento = new Date();
-  ticket.guiche = Math.floor(Math.random() * 3) + 1;
-
-  return ticket;
-}
 
   // Finalizar atendimento
   finalizar(ticket: Ticket) {
@@ -107,6 +114,11 @@ export class TicketService {
   // Relatório detalhado
   relatorioDetalhado(): Ticket[] {
     return this.tickets;
+  }
+
+  //ultimas chamadas
+  getUltimasChamadas(): Ticket[] {
+    return this.ultimasChamadas;
   }
 
   // Tempo médio geral
@@ -126,8 +138,6 @@ export class TicketService {
 
     return Math.round(total / atendidos.length / 60000); // em minutos
   }
-
-  // Relatórios
 
   // total geral
   totalEmitidas() {
@@ -153,7 +163,12 @@ export class TicketService {
   obterFila(): Ticket[] {
     return [...this.tickets].sort((a, b) => {
       // Prioridade: esperando > atendendo > finalizado
-      const prioridade = { esperando: 0, atendendo: 1, finalizado: 2, abandonado: 2 };
+      const prioridade = {
+        esperando: 0,
+        atendendo: 1,
+        finalizado: 2,
+        abandonado: 2,
+      };
       const prioA = prioridade[a.status];
       const prioB = prioridade[b.status];
 

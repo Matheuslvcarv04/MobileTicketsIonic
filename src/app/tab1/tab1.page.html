@@ -1,5 +1,4 @@
 <ion-content class="container">
-
   <div class="header">
     <h1>Mobile Tickets</h1>
     <p>Retire sua senha</p>
@@ -25,4 +24,13 @@
     <p class="tipo">{{ senhaGerada.tipo }}</p>
   </div>
 
+  <div class="painel">
+    <h2>Últimas Chamadas</h2>
+
+    <div *ngFor="let t of ultimas" class="chamada">
+      <h1 class="tt-painel">{{ t.numero }}</h1>
+      <p>Guichê {{ t.guiche }}</p>
+      <p>{{ t.dataAtendimento | date:'shortTime' }}</p>
+    </div>
+  </div>
 </ion-content>

@@ -57,7 +57,7 @@
   padding: 25px;
   text-align: center;
   backdrop-filter: blur(10px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .card-senha h2 {
@@ -74,4 +74,22 @@
 .tipo {
   font-size: 14px;
   color: #cbd5f5;
+}
+
+.painel {
+  margin-top: 20px;
+  text-align: center;
+
+  .chamada {
+    background: #222;
+    color: #fff;
+    margin: 10px;
+    padding: 15px;
+    border-radius: 10px;
+
+    .tt-painel {
+      font-size: 24px;
+      margin: 0;
+    }
+  }
 }

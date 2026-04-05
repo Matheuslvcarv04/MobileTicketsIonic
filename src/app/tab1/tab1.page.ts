@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TicketService } from '../services/ticket.service';
+import { TicketService, Ticket } from '../services/ticket.service';
 
 @Component({
   selector: 'app-tab1',
@@ -9,6 +9,14 @@ import { TicketService } from '../services/ticket.service';
 })
 export class Tab1Page {
   senhaGerada: any;
+
+  ultimas: Ticket[] = [];
+
+  ionViewDidEnter() {
+    setInterval(() => {
+      this.ultimas = this.ticketService.getUltimasChamadas();
+    }, 1000);
+  }
 
   constructor(private ticketService: TicketService) {}
 
