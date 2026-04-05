@@ -118,6 +118,17 @@ O sistema disponibiliza:
 
 ---
 
+# 6. Imagens do Sistema
+
+### Tela Totem (emissão de senhas)
+![Tela Totem](./imagens/tela-totem.png) 
+
+### Tela de atendimento
+![Tela Atendimento](./imagens/tela-atendimento.png)
+
+### Tela de Relatórios
+![Tela Relatórios](./imagens/tela-relatorios.png)
+
 ## 6. Tecnologias Utilizadas
 
 * Angular
