@@ -1,5 +1,10 @@
 # Sistema de Controle de Atendimento
 
+## Participantes
+* Lucas Rafael da Silva Alves - 01849525
+* Silvan Guilherme de Barros Souza - 01864557
+* Matheus Lopes Viana Carvalho - 01590039
+
 ## 1. Introdução
 
 Este projeto tem como objetivo o desenvolvimento de um sistema de controle de atendimento, simulando um ambiente real de gerenciamento de filas com múltiplos níveis de prioridade.
